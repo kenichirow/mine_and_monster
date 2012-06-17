@@ -52,7 +52,6 @@ require([
                 $('#game-board').animate( { opacity: 1 },1000) }
           );
         }else{
-          $('#game-board').hide();
           $('#game-board').css( 'opacity', 0 );
           for(var ix = 1; ix <= 6; ix++){
             for (var iy = 1; iy <= 9; iy++) {
