@@ -64,6 +64,7 @@ define([
          
       }
       App.start = function(){
+        scrollTo(0,1);
         App.makeBoard();        
         App.dungeonView = new DungeonView(); 
         App.effectView = new EffectView();
