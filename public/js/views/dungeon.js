@@ -12,6 +12,8 @@ define([
 
           el : $('#dungeon'),
           initialize : function(){
+             this.$el.find('#m1').find('.turn').text(window.App.turn.m1);
+             this.$el.find('#m2').find('.turn').text(window.App.turn.m2);
           },
          turnCount : function(){
              this.$el.find('#m1').find('.turn').text(window.App.turn.m1);
