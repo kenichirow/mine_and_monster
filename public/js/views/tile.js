@@ -80,6 +80,7 @@ define([
                        App.dungeonView.render();
                        App.makeBoard();
                        App.damage = { "fire" : 0, "water" : 0, "wind" : 0 };
+                       App.monster.set('turn',App.monster.get('turn') - 1);
                        $('#wind','.party').find('span').text(0);
                        $('#fire','.party').find('span').text(0);
                        $('#water','.party').find('span').text(0);

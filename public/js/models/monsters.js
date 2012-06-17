@@ -2,34 +2,17 @@ define([
     '../vendor/jquery.js', 
     '../vendor/underscore.js', 
     '../vendor/backbone.js', 
-    './gem.js', 
+    './monster.js', 
     ],
-    function(a,b,c,Gem){
+    function(a,b,c,Monster){
        
-      var Monster = Backbone.Model.extend(
+      var MonsterCollection = Backbone.Collection.extend(
         {
-          defaults : function(){
-                       return {
-                         name : "",
-                         life : 1000,
-                         attribute : "fire",
-                         dead : false,
-                         src : "img/monster.jpg",
-                         animation : null,
-                         turn : 5
-                       }
-                     },
-           intialize : function(){
-                      this.set({name: "monster_1"});
-                       },
-           damage : function(dam){
-                   this.life -= dam; 
-                   if( life <= 0 ) this.dead = true;
-                    },
-           isDead : function(){
-                   return dead; 
-                  }
+          model : Monster,
+          intialize : function(){
+           
+                        },
         }
       );
-      return Monster; 
+      return MonsterCollection; 
     });
