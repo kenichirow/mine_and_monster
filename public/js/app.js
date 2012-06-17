@@ -33,6 +33,7 @@ require([
 
       //init game board
       App.makeBoard = function(){
+
         if(App.boardView){
           $('#game-board').animate(
               { opacity: 0 },1000,
@@ -51,6 +52,8 @@ require([
                 $('#game-board').animate( { opacity: 1 },1000) }
           );
         }else{
+          $('#game-board').hide();
+          $('#game-board').css( 'opacity', 0 );
           for(var ix = 1; ix <= 6; ix++){
             for (var iy = 1; iy <= 9; iy++) {
               var gem = new Gem({x:ix,y:iy})
@@ -59,6 +62,7 @@ require([
               $('#game-board').append(tile.render().$el);
             }
           }
+         $('#game-board').show().delay(500).animate( { opacity: 1 },1000) 
           gems.setDistance();
         }
          
