@@ -1,10 +1,7 @@
 define([
-     '../vendor/easeljs.min.js',
-     '../vendor/tween.js',
      '../vendor/jquery.js', 
      '../vendor/underscore.js', 
-     '../vendor/backbone.js', 
-     '../vendor/easeljs.min.js' 
+     '../vendor/backbone.js'
     ],
     function(a,b,c){
    

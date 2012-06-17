@@ -1,7 +1,4 @@
 define([
-     '../vendor/jquery.js', 
-     '../vendor/easeljs.min.js', 
-     '../vendor/tween.js', 
      '../vendor/underscore.js', 
      '../vendor/backbone.js', 
      '../models/gem.js', 
