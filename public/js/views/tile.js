@@ -22,8 +22,7 @@ define([
                       var p  = this.model.get('point');
                       var after = pre + (p*10);
                       window.App.damage[atr] = after;
-                      this.$el.animate( { opacity : 0.4 },
-                          400,function(){ $(this).css('opacity',1); }); 
+                      this.tick();
                        if(p){
                          this.$el.addClass('open');
                        }else{
@@ -46,25 +45,28 @@ define([
                    var atr = this.model.get('attribute')
                      $('#'+this.model.get('attribute'),'.party').find('span').text(val);
                      },
-          
-          onClick : function(){
-                  var innerText = ""; 
+          tick : function(){
                   this.$el.animate( { opacity : 0.4 },
                       400,function(){ $(this).css('opacity',1); }); 
+                 }, 
+          onClick : function(){
+                   this.$el.addClass('open');
+                   this.tick();
+                   var innerText = ""; 
                    var atr = this.model.get('attribute')
                    var pre = window.App.damage[atr] 
-                   var p  = this.model.get('point');
-                   var after = pre + (p*10);
+                   var point  = this.model.get('point');
+                   var after = pre + (point*10);
                    window.App.damage[atr] = after;
-                   this.$el.addClass('open');
+
                    var isBomb = this.model.get('bomb');
-                   if(p == 0 && !isBomb ){
+                   if(point == 0 && !isBomb ){
                      this.model.openNeighbors(); 
                    }
                    if(isBomb){
                      this.onAttack();
                    }else{
-                     if(p >= 1) innerText = p*10; 
+                     if(point >= 1) innerText = point*10; 
                    }
                    this.$el.find('span').text(innerText);
                    this.undelegateEvents();
