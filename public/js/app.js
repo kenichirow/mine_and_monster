@@ -69,7 +69,7 @@ require([
       App.start = function(){
          
       }
-
+      $(document).ready(function(){
         App.makeBoard();        
         App.dungeonView = new DungeonView(); 
         App.effectView = new EffectView();
@@ -78,5 +78,6 @@ require([
         App.monster =  new Monster()
         window.App = App;
         App.start();
+      });
     });
 
