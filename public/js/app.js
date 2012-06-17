@@ -23,6 +23,7 @@ require([
       
       //set game components
       var App = {};
+        window.App = App;
       App.turn = { "m1" : 3, "m2" : 2 }
       var gems = new Gems();
         App.damage = {
@@ -76,7 +77,6 @@ require([
         App.boardView = new BoardView(); 
         App.gems = gems;
         App.monster =  new Monster()
-        window.App = App;
         App.start();
       });
     });
