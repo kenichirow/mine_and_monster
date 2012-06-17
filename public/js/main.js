@@ -1,5 +1,5 @@
   require.config({
-    waitSeconds:5 
+    waitSeconds:30
   });
 
 require([
@@ -12,7 +12,7 @@ require([
      ,'js/views/effect-view.js' 
      ,'js/models/gem.js'  
      ,'js/models/gems.js'  
-     ,'js/models/monsters.js' 
+     ,'js/models/monster.js' 
      ,'js/app.js' 
     ],
     function(

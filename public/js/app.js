@@ -9,7 +9,7 @@ define([
      ,'js/views/effect-view.js' 
      ,'js/models/gem.js'  
      ,'js/models/gems.js'  
-     ,'js/models/monsters.js' 
+     ,'js/models/monster.js' 
     ],
     function(
       a,b,c,
@@ -68,11 +68,12 @@ define([
           scrollTo(0, 1);
         }, 100);
         App.makeBoard();        
-        App.dungeonView = new DungeonView(); 
-        App.effectView = new EffectView();
+        App.monster =  new Monster()
+        console.log(App.monster);
+        App.dungeonView = new DungeonView({model:App.monster}); 
         App.boardView = new BoardView(); 
         App.gems = gems;
-        App.monster =  new Monster()
+        App.effectView = new EffectView();
       }
       return App;
     });
