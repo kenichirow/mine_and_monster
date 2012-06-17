@@ -13,21 +13,17 @@ define([
           tagName : 'div',
 
           initialize : function(){
-            this.model.bind('change:opend',this.onOpend,this);
+            this.model.bind('change:opend',this.onOpen,this);
             this.model.bind('change:attribute',this.setAttr,this);
           },
-          onOpend : function(){
+          onOpen : function(){
                       var atr = this.model.get('attribute')
                       var pre = window.App.damage[atr] 
                       var p  = this.model.get('point');
                       var after = pre + (p*10);
-                      var e = this.$el;
-                      this.$el.animate(
-                        { opacity : 0.4 },
-                        400,function(d){
-                            $(e).css('opacity',1); 
-                          }); 
                       window.App.damage[atr] = after;
+                      this.$el.animate( { opacity : 0.4 },
+                          400,function(){ $(this).css('opacity',1); }); 
                        if(p){
                          this.$el.addClass('open');
                        }else{
@@ -52,14 +48,9 @@ define([
                      },
           
           onClick : function(){
-
                   var innerText = ""; 
-                  var e = this.$el;
-                  this.$el.animate(
-                      { opacity : 0.4 },
-                      400,function(d){
-                        $(e).css('opacity',1); 
-                      }); 
+                  this.$el.animate( { opacity : 0.4 },
+                      400,function(){ $(this).css('opacity',1); }); 
                    var atr = this.model.get('attribute')
                    var pre = window.App.damage[atr] 
                    var p  = this.model.get('point');
