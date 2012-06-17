@@ -1,12 +1,12 @@
 define([
      '../vendor/jquery.js', 
-     '../vendor/underscore.js', 
-     '../vendor/backbone.js', 
      '../vendor/easeljs.min.js', 
      '../vendor/tween.js', 
+     '../vendor/underscore.js', 
+     '../vendor/backbone.js', 
      '../models/gem.js', 
     ],
-    function(a,b,c,gem){
+    function(a,b,c,d,e,gem){
 
        var TileView = Backbone.View.extend(
          {
