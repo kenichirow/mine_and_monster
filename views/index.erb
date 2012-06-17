@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Monster&Mine</title>
+    <meta name="viewport" content="width=320,user-scalable=no,initial-scale=1,maximum-scale=1" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/vendor/require.js" data-main="js/app"></script>
+  </head>
+  <body>
+    <div class="container">
+
+      <div id="dungeon" class="clearFix">
+        <div class="monster" id="m1">
+          <p class="turnGauge">あと<span class="turn">0</span></p>
+          <img src="img/monster_2.png" alt="" />
+
+          <div class="ui-gauge">
+            <div class="gauge-bar"> <p><span style=""></span></p></div>
+          </div>
+
+        </div>
+
+        <div class="monster" id="m2">
+          <p class="turnGauge">あと<span class="turn">0</span></p>
+          <img src="img/monster_1.png" alt="" />
+
+          <div class="ui-gauge">
+            <div class="gauge-bar"> <p><span style=""></span></p></div>
+          </div>
+        </div>
+      </div>  
+
+      <div class="party">
+        <div class="friend" id="wind">
+          <span>0</span>
+          <img src="img/party_1.png" alt="" />
+        </div>
+        <div class="friend" id="water">
+          <span>0</span>
+          <img src="img/party_2.png" alt="" />
+        </div>
+        <div class="friend" id="fire">
+          <span>0</span>
+          <img src="img/party_3.png" alt="" />
+        </div>
+      </div>
+      <div class="ui-gauge-life">
+        LIFE <div class="gauge-bar">
+          <p><span></span></p></div>
+      </div>
+
+      <div id="game-board">
+      </div>  
+
+      <div id="canvasContainer">
+        <canvas id="stg" width="320" height="480"> </canvas>
+      </div>
+    </div>	
+  </body>
+</html>

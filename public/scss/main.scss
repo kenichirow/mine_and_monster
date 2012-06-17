@@ -1,0 +1,217 @@
+@import 'reset';
+
+
+$color_fire:#f61a68;
+$color_water:#1aa1f6;
+$color_wind:#7ee306;
+
+body {
+  background:#000;
+  color : white;
+  font-size : 0.8em;
+  line-height: 22px;
+  font-family: Helvetica Neue, Helvetica, Arial;
+}
+
+.clearFix:after{
+    content: "."; 
+    display: block; 
+    height: 0; 
+    font-size:0;	
+    clear: both; 
+    visibility:hidden;
+    }
+	
+.clearFix{display: inline-block;} 
+
+
+.container {
+  position : relative;
+  width : 320px;
+  margin : 0 auto;
+}
+
+#dungeon {
+
+  @extend .clearFix;
+  background-image : url(../img/dun.png);
+  background-repeat : no-repeat;
+  width : 320px;
+  height : 173px;
+  text-align : center;
+
+  .monster {
+    width : 120px;
+    float : left;
+    margin-left : 25px;
+
+    .turnGauge {
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0px 3px;
+      border-radius: 10px;
+      text-shadow: 1px 1px 1px black;
+      font-size: 10px;
+      font-weight: bold;
+      border: 2px solid white;
+      position: absolute;
+      top: 18px;
+      .turn { font-size : 13px; }
+    }
+
+
+  .ui-gauge {
+    top:0px; 
+    position: absolute; 
+    .gauge-bar {
+      background-color: rgba(0, 0, 0, 0.8); 
+      border: 2px solid rgba(255, 255, 255, 0.9); 
+      margin: 5px 0; 
+      width:100px; 
+      border-radius: 10px;
+      p span {
+          width: 30%;
+          background: -webkit-linear-gradient(top,#fea546 0%, #fb880c 100%);
+          height: 5px;
+          display: block;
+      }
+    }
+  }
+
+  }
+
+}
+
+
+.ui-gauge-life {
+    background-image : url(../img/gauge_bg.gif);
+    .gauge-bar {
+      background-color: rgba(0, 0, 0, 0.8); 
+      border: 2px solid rgba(235, 212, 94,1);
+      display: inline-block; 
+      width: 280px; 
+      border-radius: 10px;
+      p span {
+          width: 30%;
+          background: -webkit-linear-gradient(top,#fc3985 0%, #fc0364 100%);
+          height: 5px;
+          display: block;
+      }
+    }
+  }
+
+.header {
+
+}
+
+.tile {
+  float : left;
+  width : 35px;
+  height : 35px;
+  background-image : url(../img/tile.png);
+  background-repeat: no-repeat;
+  } 
+
+  .tile span {
+    margin: 0 auto;
+    width: 20px;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 1px gray;
+    font-size: 18px;
+}
+
+.fire { 
+  background-position-x: 0px; 
+  span { color: $color_fire; }
+}
+.water { 
+  background-position-x: -35px; 
+  span { color: $color_water; }
+}
+.wind { 
+  background-position-x: -70px; 
+  span { color: $color_wind; }
+}
+.heal { background-position-x: -103px; }
+.open {  
+  background-position-x: -165px;
+}
+.off {
+  background-position-x: -165px;
+}
+
+.attack { background-position-x: -135px; }
+
+#canvasContainer {
+  position:absolute;
+  width : 320px;
+  height : 480px;
+  top:0px;
+  z-index : 30;
+  display:none;
+
+  &.fire { background-color : #f61a68; }
+  &.water { background-color : #1aa1f6; }
+  &.wind { background-color : #afd49c; }
+  &.heal { background-color : #fff; }
+}
+
+
+#canvasContainer span{
+  width: 320px;
+  color: white;
+  font-size : 25px;
+  text-align: center;
+  margin: 100px auto;
+  display: inline-block;
+}
+.party {
+  height: 50px;
+  background-color: rgba(21, 21, 22, 0.79);
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.21);
+  border-radius: 5px;
+  margin-top: -60px;
+  position:relative;
+  .friend {
+    width: 50px;
+    float: left;
+    height: 50px;
+    margin: 0 5px 0 5px;
+    span {
+      color: white;
+      padding: 3px;
+      border-radius: 10px;
+      text-shadow: 1px 1px 1px black;
+      font-size: 16px;
+      font-weight: bold;
+      border: 2px solid white;
+      position: absolute;
+      top: -10px;
+    }
+    &#fire span { background-color : $color_fire; }
+    &#water span { background-color : $color_water; }
+    &#wind span { background-color : $color_wind; }
+  }
+
+}
+
+#timer {
+  z-index: 20;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  top: 0;
+  right: 0;
+}
+
+
+
+#game-board {
+background: #D0CFC8;
+height: 210px;
+
+}
