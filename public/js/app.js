@@ -1,8 +1,5 @@
-  require.config({
-    waitSeconds:5 
-  });
 
-require([
+define([
      'js/vendor/jquery.js' 
      ,'js/vendor/easeljs.min.js' 
      ,'js/vendor/tween.js'
@@ -23,7 +20,6 @@ require([
       
       //set game components
       var App = {};
-        window.App = App;
       App.turn = { "m1" : 3, "m2" : 2 }
       var gems = new Gems();
         App.damage = {
@@ -68,16 +64,14 @@ require([
          
       }
       App.start = function(){
-         
-      }
-      $(document).ready(function(){
         App.makeBoard();        
         App.dungeonView = new DungeonView(); 
         App.effectView = new EffectView();
         App.boardView = new BoardView(); 
         App.gems = gems;
         App.monster =  new Monster()
-        App.start();
-      });
+          console.log('start');
+      }
+      return App;
     });
 
