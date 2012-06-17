@@ -21,7 +21,6 @@ define([
       //set game components
       var App = {};
       App.turn = { "m1" : 3, "m2" : 2 }
-      var gems = new Gems();
         App.damage = {
            "fire" : 0,
            "water" : 0,
@@ -29,6 +28,7 @@ define([
         };
 
       //init game board
+      var gems = new Gems();
       App.makeBoard = function(){
 
         if(App.boardView){
@@ -67,14 +67,12 @@ define([
         setTimeout(function() {
           scrollTo(0, 1);
         }, 100);
-
         App.makeBoard();        
         App.dungeonView = new DungeonView(); 
         App.effectView = new EffectView();
         App.boardView = new BoardView(); 
         App.gems = gems;
         App.monster =  new Monster()
-          console.log('start');
       }
       return App;
     });
