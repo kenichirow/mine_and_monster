@@ -2,7 +2,7 @@ require 'rubygems'
 begin
   require 'bundler'
   Bundler.require
-  require './hello'
+  require './main'
   run Sinatra::Application
 rescue LoadError => err
  warn "where's bunder #{err}" 
