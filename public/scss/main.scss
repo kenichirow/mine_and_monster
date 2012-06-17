@@ -26,6 +26,7 @@ body {
 
 
 .container {
+  text-align:center;
   position : relative;
   width : 320px;
   margin : 0 auto;
@@ -214,4 +215,23 @@ body {
   display:none;
   background: #D0CFC8;
   height: 210px;
+}
+
+
+
+.start-btn{
+border: 2px solid white;
+background: -webkit-gradient(linear, left top, left bottom, from(#4E94A2), to(#093C8A));
+margin: 0 auto 10px auto;
+-webkit-border-radius: 10px;
+display: inline-block;
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+a {
+color: white;
+padding: 5px 20px;
+text-decoration: none;
+font-weight: bold;
+display: inline-block;
+
+}  
 }
