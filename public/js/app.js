@@ -49,7 +49,6 @@ define([
           );
         }else{
          $('#game-board').css( 'opacity', 0 );
-         $('#game-board').css( "margin-top" , "-50px" )
           App.gems = new Gems();
           for(var ix = 1; ix <= 6; ix++){
             for (var iy = 1; iy <= 9; iy++) {
