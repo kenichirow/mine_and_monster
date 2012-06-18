@@ -80,7 +80,7 @@ define([
       }
       App.resetTimer = function(){
           $(window).stopTime('timer');
-          $("#timer").find('time').css('color','white');
+          $("#timer").find('.time').css('color','white');
           App.currentTime = 0;
           App.startTimer();
           App.makeBoard();
