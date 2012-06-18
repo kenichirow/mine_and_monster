@@ -79,7 +79,11 @@ define([
         });
       }
       App.resetTimer = function(){
+          console.log('reset!!!');
           $(window).stopTime('timer');
+          var elm = $('#timer').find('.time');
+          var t = 20; 
+          $(elm).text(t);
           $("#timer").find('.time').css('color','white');
           App.currentTime = 0;
           App.startTimer();

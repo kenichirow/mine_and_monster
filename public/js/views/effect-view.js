@@ -53,6 +53,7 @@ define([
                     effect.stop();
                     skill.alpha = 1;
                     $(elm).css('z-index',0).hide()
+                    window.App.resetTimer();
                   }
                 });
               };
