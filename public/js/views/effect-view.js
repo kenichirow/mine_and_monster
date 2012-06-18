@@ -25,7 +25,7 @@ define([
             this.damageEffect = new BitmapAnimation(new SpriteSheet(this.damageSprite));
             this.stage = new Stage(document.getElementById("stg"));
             this.stage.addChild(this.skillBitmap);
-            this.skillBitmap.y = 200;
+            this.skillBitmap.y = 193;
             this.stage.addChild(this.damageEffect);
             this.stage.update();
             Ticker.setFPS(22);

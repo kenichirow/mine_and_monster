@@ -28,7 +28,10 @@ define([
       App.makeBoard = function(){
         if(App.boardView){
           $('#game-board').animate(
-              { opacity: 0 },1000,
+              { 
+                "opacity": 0,
+                "margin-top" : "100px"
+              },100,
               function(){
                 App.gems.reset();
                 $('#game-board').html('');
@@ -41,10 +44,12 @@ define([
                   }
                 }
                 App.gems.setDistance();
-                $('#game-board').animate( { opacity: 1 },1000) }
+
+                $('#game-board').css( "margin-top" , "0px" ).animate( { opacity: 1 },500) }
           );
         }else{
-          $('#game-board').css( 'opacity', 0 );
+         $('#game-board').css( 'opacity', 0 );
+         $('#game-board').css( "margin-top" , "-50px" )
           App.gems = new Gems();
           for(var ix = 1; ix <= 6; ix++){
             for (var iy = 1; iy <= 9; iy++) {
@@ -54,7 +59,7 @@ define([
               $('#game-board').append(tile.render().$el);
             }
           }
-         $('#game-board').show().delay(500).animate( { opacity: 1 },1000) 
+         $('#game-board').show().delay(300).animate( { opacity: 1 ,"margin-top" :"0" },200) 
           App.gems.setDistance();
         }
          
