@@ -48,7 +48,7 @@ define([
                         nCount +=1; 
                       }
                     });
-                    self.set({point : nCount/8}); 
+                    self.set({point : nCount}); 
 
                   }else{
                         this.set({dist:0}); 
@@ -70,10 +70,6 @@ define([
                             this.set({'opend': true});
                             var col = this.collection;                      
                             _.each(this.get('neighbors'),function(n){
-                               
-                              if(n.get('bomb')){
-                               }
-
                               if(!n.get('opend')){
                                   n.open();
                                 if(n.get('dist') < 1){

@@ -10,33 +10,22 @@ define([
         {
            model : Gem,
            getBombs : function(){
-                      var result = [];
-                      for(var i = 0; i<8; i++){
-                        var b = this.at(Math.floor(Math.random()*this.length));
-                        b.set({bomb : true});
-                        result.push(b);
-                      }
-                        return result;
+                      var result = [], self = this;
+                      _(8).times(function(d){
+                        result.push(self.at(Math.floor(Math.random()*self.length)).set({bomb : true}))
+                      });
+                       return result;
                       },
             setDistance : function(){
                            this.at(6).set({attribute : "heal"});
                            var bombs = this.getBombs(); 
-                            this.each(function(model){
+                           this.each(function(model){
                               var l1,l2;
-                              var l;
                               _.each(bombs,function(bomb){
-                                if(l1){
-                                  l2 = model.distance(bomb) 
-                                if(l2 >=l1){
-                                  l = l1; 
-                                }else{
-                                  l = l2; 
-                                } 
-                                }else{
-                                  l = model.distance(bomb) 
-                                }
-                                model.setPoint(l);
+                                l1 = model.distance(bomb) 
+                                if(l2 >= l1){ l2 = l1;}
                               });
+                             model.setPoint(l2);
                             }); 
 
                           },
