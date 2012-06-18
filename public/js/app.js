@@ -58,8 +58,9 @@ define([
               $('#game-board').append(tile.render().$el);
             }
           }
-         $('#game-board').show().delay(300).animate( { opacity: 1 },200) 
           App.gems.setDistance();
+          $('#loading').delay(300).animate({opacity:0},200).hide();
+          $('#game-board').show().delay(400).animate( { opacity: 1 },200);
         }
          
       }

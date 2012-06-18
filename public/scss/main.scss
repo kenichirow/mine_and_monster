@@ -255,3 +255,12 @@ body {
     display: inline-block;
   }  
 }
+#loading {
+  z-index: 1000;
+  width: 320px;
+  height: 420px;
+  position: absolute;
+  background: black;
+  top: 0;
+  img { margin-top : 180px }
+}
