@@ -19,18 +19,12 @@ define([
       Monster
       ){
       
-      //set game components
       var App = {};
 
       App.turn = { "m1" : 3, "m2" : 2 }
 
-      App.damage = {
-           "fire" : 0,
-           "water" : 0,
-           "wind" : 0
-      };
+      App.damage = { "fire" : 0, "water" : 0, "wind" : 0 };
 
-      //init game board
       App.makeBoard = function(){
         if(App.boardView){
           $('#game-board').animate(
@@ -65,8 +59,10 @@ define([
         }
          
       }
+
       App.time = 20;
       App.currentTime = 0;
+
       App.startTimer = function(){
         $(window).everyTime(1000,'timer',function(){
           App.currentTime+=1;
@@ -78,6 +74,7 @@ define([
           $(elm).text(t);
         });
       }
+
       App.resetTimer = function(){
           $(window).stopTime('timer');
           var elm = $('#timer').find('.time');
@@ -87,16 +84,12 @@ define([
           App.currentTime = 0;
           App.startTimer();
           App.makeBoard();
-          App.damage = {
-            "fire" : 0,
-            "water" : 0,
-            "wind" : 0
-          };
+          App.damage = { "fire" : 0, "water" : 0, "wind" : 0 };
           $('.party').find('#fire').find('span').text(0);
           $('.party').find('#wind').find('span').text(0);
           $('.party').find('#water').find('span').text(0);
-
        }
+
       App.start = function(){
         setTimeout(function() {
           scrollTo(0, 1);

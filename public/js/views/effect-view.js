@@ -13,14 +13,6 @@ define([
           skillBitmap : new Bitmap('img/skill.png'),
           damageSprite : {"images": ["img/effect.png"], "frames": {"count": 20, "regX": 0, "width": 258, "regY": 0, "height": 113}, "animations": {"all": [0, 19,null]}},
           initialize : function(){
-            this.damageEffect = new BitmapAnimation(new SpriteSheet(this.damageSprite));
-            this.stage = new Stage(document.getElementById("stg"));
-            this.stage.addChild(this.skillBitmap);
-            this.skillBitmap.y = 200;
-            this.stage.addChild(this.damageEffect);
-            this.stage.update();
-            Ticker.setFPS(22);
-            Ticker.addListener(this);
           },
 
            partyParam : [
@@ -30,6 +22,14 @@ define([
            ],
 
           render : function(){
+            this.damageEffect = new BitmapAnimation(new SpriteSheet(this.damageSprite));
+            this.stage = new Stage(document.getElementById("stg"));
+            this.stage.addChild(this.skillBitmap);
+            this.skillBitmap.y = 200;
+            this.stage.addChild(this.damageEffect);
+            this.stage.update();
+            Ticker.setFPS(22);
+            Ticker.addListener(this);
               this.$el.show();
               var elm = this.$el;
               var stage = this.stage;
