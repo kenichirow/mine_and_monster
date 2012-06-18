@@ -34,7 +34,6 @@ define([
           setPoint : function(dist){
                   var self = this;
                   if(!this.get('bomb')){
-                    console.log(this.get('neighbors'));
                     var n = this.get('neighbors');
                     this.collection.each(function(model){
                       if(self.distance(model) == 1 ){

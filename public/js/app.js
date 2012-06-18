@@ -1,6 +1,7 @@
 
 define([
-     'js/vendor/jquery.js' 
+     'js/vendor/jquery.js'
+     ,'js/vendor/jquery.timers.js'
      ,'js/vendor/easeljs.min.js' 
      ,'js/vendor/tween.js'
      ,'js/views/dungeon.js' 
@@ -12,7 +13,7 @@ define([
      ,'js/models/monster.js' 
     ],
     function(
-      a,b,c,
+      a,b,c,d,
       DungeonView,BoardView,TileView,EffectView,
       Gem,Gems,
       Monster
@@ -63,16 +64,40 @@ define([
         }
          
       }
+      App.time = 20;
+      App.currentTime = 0;
+      App.startTimer = function(){
+        $(window).everyTime(1000,'timer',function(){
+          var elm = $('#timer').find('.time');
+          App.currentTime+=1;
+          var t = App.time-App.currentTime
+          if(t < 5){
+             $(elm).css('color','red');
+          } 
+          if(t <10){ t =  "0" + t}
+          $(elm).text(t);
+          if(t == 0){
+              App.resetTimer();
+          }
+        });
+      }
+      App.resetTimer = function(){
+          $(window).stopTime('timer');
+          $("#timer").find('time').css('color','white');
+          App.currentTime = 0;
+          App.startTimer();
+          App.makeBoard();
+       }
       App.start = function(){
         setTimeout(function() {
           scrollTo(0, 1);
         }, 100);
         App.makeBoard();        
         App.monster =  new Monster()
-        console.log(App.monster);
         App.dungeonView = new DungeonView({model:App.monster}); 
         App.boardView = new BoardView(); 
         App.gems = gems;
+        App.startTimer();
         App.effectView = new EffectView();
       }
       return App;

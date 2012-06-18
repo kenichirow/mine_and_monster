@@ -24,7 +24,6 @@ require([
       ){
       window.App = App; 
       $(document).ready(function(){
-
         if($('body#game')){
           window.App.start();
         }

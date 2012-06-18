@@ -10,12 +10,9 @@ define([
         {
            model : Gem,
            getBombs : function(){
-                      console.log(this);
                       var result = [];
                       for(var i = 0; i<6; i++){
                         var b = this.at(Math.floor(Math.random()*this.length));
-                        console.log(b);
-                        console.log(this.model);
                         b.set({bomb : true});
                         result.push(b);
                       }
@@ -47,7 +44,6 @@ define([
                        this.model.bind('change:opend',this.onChange,this);
                         },
             onChange : function(){
-                       console.log('bomb!!!');
                        this.trigger('bomb');  
             },
              
