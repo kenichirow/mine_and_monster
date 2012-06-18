@@ -1,22 +1,22 @@
 
 define([
-     'js/vendor/jquery.js'
-     ,'js/vendor/jquery.timers.js'
-     ,'js/vendor/easeljs.min.js' 
+     'js/vendor/easeljs.min.js' 
      ,'js/vendor/tween.js'
+     ,'js/vendor/jquery.js'
+     ,'js/vendor/jquery.timers.js'
      ,'js/views/dungeon.js' 
      ,'js/views/board.js'  
      ,'js/views/tile.js'  
-     ,'js/views/effect-view.js' 
      ,'js/models/gem.js'  
      ,'js/models/gems.js'  
      ,'js/models/monster.js' 
+     ,'js/views/effect-view.js' 
     ],
     function(
       a,b,c,d,
-      DungeonView,BoardView,TileView,EffectView,
+      DungeonView,BoardView,TileView,
       Gem,Gems,
-      Monster
+      Monster,EffectView
       ){
       
       var App = {};
