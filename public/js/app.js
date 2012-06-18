@@ -68,17 +68,13 @@ define([
       App.currentTime = 0;
       App.startTimer = function(){
         $(window).everyTime(1000,'timer',function(){
-          var elm = $('#timer').find('.time');
           App.currentTime+=1;
+          var elm = $('#timer').find('.time');
           var t = App.time-App.currentTime
-          if(t < 5){
-             $(elm).css('color','red');
-          } 
+          if(t < 5){ $(elm).css('color','red'); } 
           if(t <10){ t =  "0" + t}
+          if(t == 0){ App.resetTimer(); }
           $(elm).text(t);
-          if(t == 0){
-              App.resetTimer();
-          }
         });
       }
       App.resetTimer = function(){
