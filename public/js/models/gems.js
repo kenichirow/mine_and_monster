@@ -10,12 +10,16 @@ define([
         {
            model : Gem,
            getBombs : function(){
-                        var half = Math.floor(this.length/2);
-                        var b1 = this.at(Math.floor(Math.random()*half));
-                        var b2 = this.at(half + Math.floor(Math.random()*half));
-                        b1.set({bomb : true});
-                        b2.set({bomb : true});
-                        return [b1,b2];
+                      console.log(this);
+                      var result = [];
+                      for(var i = 0; i<6; i++){
+                        var b = this.at(Math.floor(Math.random()*this.length));
+                        console.log(b);
+                        console.log(this.model);
+                        b.set({bomb : true});
+                        result.push(b);
+                      }
+                        return result;
                       },
             setDistance : function(){
                            this.at(6).set({attribute : "heal"});
@@ -31,8 +35,8 @@ define([
                                 }else{
                                   l = l2; 
                                 } 
-                                }{
-                                  l1 = model.distance(bomb) 
+                                }else{
+                                  l = model.distance(bomb) 
                                 }
                                 model.setPoint(l);
                               });
@@ -43,7 +47,7 @@ define([
                        this.model.bind('change:opend',this.onChange,this);
                         },
             onChange : function(){
-                         console.log('bomb!!!');
+                       console.log('bomb!!!');
                        this.trigger('bomb');  
             },
              

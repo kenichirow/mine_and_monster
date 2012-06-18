@@ -28,7 +28,9 @@ define([
                        }else{
                          this.$el.addClass('off');
                        }
-                      if(p >= 1) this.$el.find('span').text(p);
+                      if(p >= 1){
+                        this.$el.find('span').text(this.model.get('point'));
+                      } 
                       var atr = this.model.get('attribute')
                       this.sumPoint(window.App.damage[atr]);
                       this.undelegateEvents();
@@ -52,7 +54,8 @@ define([
           onClick : function(){
                    this.$el.addClass('open');
                    this.tick();
-                   var innerText = ""; 
+                   var dist = this.model.get('dist');
+                   var innerText = dist; 
                    var atr = this.model.get('attribute')
                    var pre = window.App.damage[atr] 
                    var point  = this.model.get('point');
@@ -62,11 +65,12 @@ define([
                    var isBomb = this.model.get('bomb');
                    if(point == 0 && !isBomb ){
                      this.model.openNeighbors(); 
+                     innerText = "";
                    }
                    if(isBomb){
                      this.onAttack();
                    }else{
-                     if(point >= 1) innerText = point; 
+                     if( dist>= 1) innerText =dist; 
                    }
                    this.$el.find('span').text(innerText);
                    this.undelegateEvents();

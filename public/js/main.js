@@ -23,6 +23,11 @@ require([
       App
       ){
       window.App = App; 
-      window.App.start();
+      $(document).ready(function(){
+
+        if($('body#game')){
+          window.App.start();
+        }
+      });
     });
 
