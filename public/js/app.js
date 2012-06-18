@@ -30,8 +30,8 @@ define([
           $('#game-board').animate(
               { 
                 "opacity": 0,
-                "margin-top" : "100px"
-              },100,
+                "margin-top" : "50px"
+              },200,
               function(){
                 App.gems.reset();
                 $('#game-board').html('');
@@ -45,7 +45,7 @@ define([
                 }
                 App.gems.setDistance();
 
-                $('#game-board').css( "margin-top" , "0px" ).animate( { opacity: 1 },500) }
+                $('#game-board').css( "margin-top" , "0px" ).animate( { opacity: 1 },300) }
           );
         }else{
          $('#game-board').css( 'opacity', 0 );
@@ -59,7 +59,7 @@ define([
               $('#game-board').append(tile.render().$el);
             }
           }
-         $('#game-board').show().delay(300).animate( { opacity: 1 ,"margin-top" :"0" },200) 
+         $('#game-board').show().delay(300).animate( { opacity: 1 },200) 
           App.gems.setDistance();
         }
          
