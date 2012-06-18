@@ -21,46 +21,47 @@ define([
       
       //set game components
       var App = {};
+
       App.turn = { "m1" : 3, "m2" : 2 }
-        App.damage = {
+
+      App.damage = {
            "fire" : 0,
            "water" : 0,
            "wind" : 0
-        };
+      };
 
       //init game board
-      var gems = new Gems();
       App.makeBoard = function(){
-
         if(App.boardView){
           $('#game-board').animate(
               { opacity: 0 },1000,
               function(){
-                gems.reset();
+                App.gems.reset();
                 $('#game-board').html('');
                 for(var ix = 1; ix <= 6; ix++){
                   for (var iy = 1; iy <= 9; iy++) {
                     var gem = new Gem({x:ix,y:iy})
-                    gems.add(gem) 
+                    App.gems.add(gem) 
                     var tile = new TileView({model:gem}); 
                     $('#game-board').append(tile.render().$el);
                   }
                 }
-                gems.setDistance();
+                App.gems.setDistance();
                 $('#game-board').animate( { opacity: 1 },1000) }
           );
         }else{
           $('#game-board').css( 'opacity', 0 );
+          App.gems = new Gems();
           for(var ix = 1; ix <= 6; ix++){
             for (var iy = 1; iy <= 9; iy++) {
               var gem = new Gem({x:ix,y:iy})
-              gems.add(gem) 
+              App.gems.add(gem) 
               var tile = new TileView({model:gem}); 
               $('#game-board').append(tile.render().$el);
             }
           }
          $('#game-board').show().delay(500).animate( { opacity: 1 },1000) 
-          gems.setDistance();
+          App.gems.setDistance();
         }
          
       }
@@ -83,6 +84,15 @@ define([
           App.currentTime = 0;
           App.startTimer();
           App.makeBoard();
+          App.damage = {
+            "fire" : 0,
+            "water" : 0,
+            "wind" : 0
+          };
+          $('.party').find('#fire').find('span').text(0);
+          $('.party').find('#wind').find('span').text(0);
+          $('.party').find('#water').find('span').text(0);
+
        }
       App.start = function(){
         setTimeout(function() {
@@ -92,7 +102,6 @@ define([
         App.monster =  new Monster()
         App.dungeonView = new DungeonView({model:App.monster}); 
         App.boardView = new BoardView(); 
-        App.gems = gems;
         App.startTimer();
         App.effectView = new EffectView();
       }

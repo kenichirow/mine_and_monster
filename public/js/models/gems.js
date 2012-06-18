@@ -11,7 +11,7 @@ define([
            model : Gem,
            getBombs : function(){
                       var result = [];
-                      for(var i = 0; i<6; i++){
+                      for(var i = 0; i<8; i++){
                         var b = this.at(Math.floor(Math.random()*this.length));
                         b.set({bomb : true});
                         result.push(b);

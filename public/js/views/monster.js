@@ -15,7 +15,6 @@ define([
              this.$el.find('.turn').text(window.App.turn.m1);
           },
          onTurnChange : function(){
-                        console.log(this.model.get('turn'));
                         var m = this.model.toJSON().turn;
                         this.$el.find('#m1').find('.turn').text(m);
                         },

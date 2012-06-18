@@ -35,7 +35,6 @@ define([
               var stage = this.stage;
               var effect = this.damageEffect;
               var skill = this.skillBitmap;
-              console.log(effect);
               var tween = Tween.get(this.skillBitmap).to({alpha:0},1000,Ease.cubicIn);
               var length = this.partyParam.length;
               for(var i=0; i<length; i++){

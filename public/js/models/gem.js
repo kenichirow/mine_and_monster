@@ -48,7 +48,7 @@ define([
                         nCount +=1; 
                       }
                     });
-                    self.set({point : nCount/6}); 
+                    self.set({point : nCount/8}); 
 
                   }else{
                         this.set({dist:0}); 
