@@ -79,7 +79,6 @@ define([
         });
       }
       App.resetTimer = function(){
-          console.log('reset!!!');
           $(window).stopTime('timer');
           var elm = $('#timer').find('.time');
           var t = 20; 

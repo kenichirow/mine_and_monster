@@ -68,6 +68,7 @@ define([
                      innerText = "";
                    }
                    if(isBomb){
+                     innerText = "";
                      this.onAttack();
                    }else{
                      if( dist>= 1) innerText =dist; 
@@ -82,7 +83,7 @@ define([
                        App.turn.m1 -=1;
                        App.turn.m2 -=1;
                        App.dungeonView.render();
-                       App.makeBoard();
+                       //App.makeBoard();
                        App.damage = { "fire" : 0, "water" : 0, "wind" : 0 };
                        App.monster.set('turn',App.monster.get('turn') - 1);
                        $('#wind','.party').find('span').text(0);
