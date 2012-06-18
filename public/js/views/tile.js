@@ -20,7 +20,7 @@ define([
                       var atr = this.model.get('attribute')
                       var pre = window.App.damage[atr] 
                       var p  = this.model.get('point');
-                      var after = pre + (p*10);
+                      var after = pre + (p);
                       window.App.damage[atr] = after;
                       this.tick();
                        if(p){
@@ -28,7 +28,7 @@ define([
                        }else{
                          this.$el.addClass('off');
                        }
-                      if(p >= 1) this.$el.find('span').text(p*10);
+                      if(p >= 1) this.$el.find('span').text(p);
                       var atr = this.model.get('attribute')
                       this.sumPoint(window.App.damage[atr]);
                       this.undelegateEvents();
@@ -56,7 +56,7 @@ define([
                    var atr = this.model.get('attribute')
                    var pre = window.App.damage[atr] 
                    var point  = this.model.get('point');
-                   var after = pre + (point*10);
+                   var after = pre + (point);
                    window.App.damage[atr] = after;
 
                    var isBomb = this.model.get('bomb');
@@ -66,7 +66,7 @@ define([
                    if(isBomb){
                      this.onAttack();
                    }else{
-                     if(point >= 1) innerText = point*10; 
+                     if(point >= 1) innerText = point; 
                    }
                    this.$el.find('span').text(innerText);
                    this.undelegateEvents();
