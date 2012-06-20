@@ -33,36 +33,40 @@ define([
                 "margin-top" : "50px"
               },200,
               function(){
-                App.gems.reset();
                 $('#game-board').html('');
-                for(var ix = 1; ix <= 6; ix++){
-                  for (var iy = 1; iy <= 9; iy++) {
-                    var gem = new Gem({x:ix,y:iy})
-                    App.gems.add(gem) 
-                    var tile = new TileView({model:gem}); 
-                    $('#game-board').append(tile.render().$el);
-                  }
-                }
-                App.gems.setDistance();
-
+                App.buildMap();
                 $('#game-board').css( "margin-top" , "0px" ).animate( { opacity: 1 },300) }
           );
         }else{
-         $('#game-board').css( 'opacity', 0 );
-          App.gems = new Gems();
-          for(var ix = 1; ix <= 6; ix++){
-            for (var iy = 1; iy <= 9; iy++) {
-              var gem = new Gem({x:ix,y:iy})
-              App.gems.add(gem) 
-              var tile = new TileView({model:gem}); 
-              $('#game-board').append(tile.render().$el);
-            }
-          }
-          App.gems.setDistance();
-          $('#loading').delay(300).animate({opacity:0},200).hide();
-          $('#game-board').show().delay(400).animate( { opacity: 1 },200);
+           $('#game-board').css( 'opacity', 0 );
+           App.buildMap();
+           $('#loading').delay(300).animate({opacity:0},200).hide();
+           $('#game-board').show().delay(400).animate( { opacity: 1 },200);
         }
          
+      }
+      //in progress
+      App.buildMap = function(x,y){
+        if(App.gems){
+          App.gems.reset();
+        }
+        var row = _.range(x);
+        var col = _.range(y);
+        /*
+        [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8]]
+        [[1,0],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7],[1,8]] 
+        */
+          App.gems = new Gems();
+          _(6).times(function(y){
+            _(9).times(function(x){
+              var gem = new Gem({x:x,y:y}); 
+              var tile = new TileView({model:gem}); 
+              App.gems.add(gem) 
+              $('#game-board').append(tile.render().$el);
+            })
+          });
+          App.gems.setDistance();
+          return App.gems;
       }
 
       App.time = 20;
