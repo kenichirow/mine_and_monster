@@ -68,7 +68,6 @@ define([
 
           openNeighbors : function(){
                             this.set({'opend': true});
-                            var col = this.collection;                      
                             _.each(this.get('neighbors'),function(n){
                               if(!n.get('opend')){
                                   n.open();
