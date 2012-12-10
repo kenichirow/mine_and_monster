@@ -13,8 +13,10 @@ define([
                   
           initialize : function(){
           },
+
           makeBoard : function(){
-                      }
+          }
+
        });
 
        return BoardView;

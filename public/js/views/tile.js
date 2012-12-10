@@ -5,8 +5,7 @@ define([
     ],
     function(a,b,c,d,e,gem){
 
-       var TileView = Backbone.View.extend(
-         {
+       var TileView = Backbone.View.extend({
 
           className : 'tile',
 
@@ -16,92 +15,90 @@ define([
             this.model.bind('change:opend',this.onOpen,this);
             this.model.bind('change:attribute',this.setAttr,this);
           },
+
           onOpen : function(){
-                      var atr = this.model.get('attribute')
-                      var pre = window.App.damage[atr] 
-                      var p  = this.model.get('point');
-                      var after = pre + (p);
-                      window.App.damage[atr] = after;
-                      this.tick();
-                       if(p){
-                         this.$el.addClass('open');
-                       }else{
-                         this.$el.addClass('off');
-                       }
-                      if(p >= 1){
-                        this.$el.find('span').text(this.model.get('point'));
-                      } 
-                      var atr = this.model.get('attribute')
-                      this.sumPoint(window.App.damage[atr]);
-                      this.undelegateEvents();
-                     },
+            var atr = this.model.get('attribute')
+            var pre = window.App.damage[atr] 
+            var p  = this.model.get('point');
+            var after = pre + (p);
+            window.App.damage[atr] = after;
+            this.tick();
+             if(p){
+               this.$el.addClass('open');
+             }else{
+               this.$el.addClass('off');
+             }
+            if(p >= 1){
+              this.$el.find('span').text(this.model.get('point'));
+            } 
+            var atr = this.model.get('attribute')
+            this.sumPoint(window.App.damage[atr]);
+            this.undelegateEvents();
+           },
                      
-          events : {
-                    "click" : "onClick"         
-                   },
+          events : { "click" : "onClick"},
+
           setAttr : function(){
-                      this.$el.removeClass(this.model.get('attribute'));
-                      this.$el.addClass(this.model.get('attribute'));
-                    },
+            this.$el.removeClass(this.model.get('attribute'));
+            this.$el.addClass(this.model.get('attribute'));
+          },
+
           sumPoint : function(val){
-                   var atr = this.model.get('attribute')
-                     $('#'+this.model.get('attribute'),'.party').find('span').text(val);
-                     },
+            var atr = this.model.get('attribute')
+            $('#'+this.model.get('attribute'),'.party').find('span').text(val);
+          },
+
           tick : function(){
-                  this.$el.animate( { opacity : 0.4 },
-                      400,function(){ $(this).css('opacity',1); }); 
-                 }, 
+            this.$el.animate( { opacity : 0.4 },
+            400,function(){ $(this).css('opacity',1); }); 
+          }, 
+
           onClick : function(){
-                   this.$el.addClass('open');
-                   this.tick();
-                   var dist = this.model.get('dist');
-                   var innerText = dist; 
-                   var atr = this.model.get('attribute')
-                   var pre = window.App.damage[atr] 
-                   var point  = this.model.get('point');
-                   var after = pre + (point);
-                   window.App.damage[atr] = after;
+            this.$el.addClass('open');
+            this.tick();
+            var dist = this.model.get('dist');
+            var innerText = dist; 
+            var atr = this.model.get('attribute')
+            var pre = window.App.damage[atr] 
+            var point  = this.model.get('point');
+            var after = pre + (point);
+            window.App.damage[atr] = after;
 
-                   var isBomb = this.model.get('bomb');
-                   if(point == 0 && !isBomb ){
-                     this.model.openNeighbors(); 
-                     innerText = "";
-                   }
-                   if(isBomb){
-                     innerText = "";
-                     this.onAttack();
-                   }else{
-                     if( dist>= 1) innerText =dist; 
-                   }
-                   this.$el.find('span').text(innerText);
-                   this.undelegateEvents();
-                   this.sumPoint(window.App.damage[atr]);
-                   },
+            var isBomb = this.model.get('bomb');
+            if(point == 0 && !isBomb ){
+              this.model.openNeighbors(); 
+              innerText = "";
+            }
+            if(isBomb){
+              innerText = "";
+              this.onAttack();
+            }else{
+              if( dist>= 1) innerText =dist; 
+            }
+            this.$el.find('span').text(innerText);
+            this.undelegateEvents();
+            this.sumPoint(window.App.damage[atr]);
+          },
+
           onAttack : function(){
-                       this.$el.addClass('attack');
-                       App.effectView.render();
-                       App.turn.m1 -=1;
-                       App.turn.m2 -=1;
-                       App.dungeonView.render();
-                       //App.makeBoard();
-                       App.damage = { "fire" : 0, "water" : 0, "wind" : 0 };
-                       App.monster.set('turn',App.monster.get('turn') - 1);
-                       $('#wind','.party').find('span').text(0);
-                       $('#fire','.party').find('span').text(0);
-                       $('#water','.party').find('span').text(0);
+            this.$el.addClass('attack');
+            App.effectView.render();
+            App.turn.m1 -=1;
+            App.turn.m2 -=1;
+            App.dungeonView.render();
+            //App.makeBoard();
+            App.damage = { "fire" : 0, "water" : 0, "wind" : 0 };
+            App.monster.set('turn',App.monster.get('turn') - 1);
+            $('#wind','.party').find('span').text(0);
+            $('#fire','.party').find('span').text(0);
+            $('#water','.party').find('span').text(0);
+          }, 
 
-                     }, 
-          onReset : function() {
-                    } ,
-
-          onHealing : function() {
-                      
-                      },
           render : function(){
             this.$el.addClass(this.model.get('attribute'));
             this.$el.append($('<span>'));
             return this;
-          } 
+          }, 
 
        }
       );

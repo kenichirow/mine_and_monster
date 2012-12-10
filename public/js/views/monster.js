@@ -8,21 +8,23 @@ define([
    
        var MonsterView = Backbone.View.extend({
 
-          el : $('.dungeon'),
+         el : $('.dungeon'),
 
-          initialize : function(){
-             this.model.bind('change:turn',this.onTurnChange,this);
-             this.$el.find('.turn').text(window.App.turn.m1);
-          },
+         initialize : function(){
+           this.model.bind('change:turn',this.onTurnChange,this);
+           this.$el.find('.turn').text(window.App.turn.m1);
+         },
+
          onTurnChange : function(){
-                        var m = this.model.toJSON().turn;
-                        this.$el.find('#m1').find('.turn').text(m);
-                        },
+           var m = this.model.toJSON().turn;
+           this.$el.find('#m1').find('.turn').text(m);
+         },
+
          render : function() {
 
-             }
+         }
+
        });
 
        return MonsterView;
-    }
-    );
+});
